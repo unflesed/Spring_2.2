@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+        <bean id="customer1" class="customers.Customer" init-method="init">
+            <constructor-arg name="firstName" value="Ivan"/>
+            <constructor-arg name="age" value="22"/>
+            <property name="lastName" value="Ivanov"/>
+            <property name="gender" value="male"/>
+        </bean>
+
+        <bean id="customer2" class="customers.Customer">
+            <constructor-arg name="firstName" value="Vasya"/>
+            <constructor-arg name="age" value="23"/>
+        </bean>
+
+        <util:map id="map" scope="singleton" map-class="java.util.HashMap" key-type="int" value-type="customers.Customer">
+            <entry key="1" value-ref="customer1"/>
+            <entry key="2" value-ref="customer2"/>
+        </util:map>
+</beans>
